@@ -1,6 +1,6 @@
 #simple-extension-12345 {
   z-index: 2147483647; /* highest z-index value */
-  position: absolute;
+  position: fixed;
   top: 10px;
   right: 0;
 }
@@ -58,8 +58,8 @@
   font-size: 5rem;
   font-weight: bold;
   color: black;
-	content: attr(super-script);
-	position: absolute;
-	top: -4rem;
-	left: -2rem;
+  content: attr(super-script);
+  position: absolute;
+  top: -4rem;
+  left: -2rem;
 }
