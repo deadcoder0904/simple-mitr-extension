@@ -1,16 +1,7 @@
 // NOTE: FOR CROSS PLATFORM (CHROME & FIREFOX) COMPATIBILITY 👇
-import browser from 'webextension-polyfill'
-import sequence from './customScript'
-import {
-  checkmarkSVG,
-  closeSVG,
-  copySVG,
-  downSVG,
-  finalizeSVG,
-  initSVG,
-  upSVG,
-  resetSVG
-} from './svg'
+import browser from 'webextension-polyfill';
+import sequence from './customScript';
+import { checkmarkSVG, closeSVG, copySVG, downSVG, finalizeSVG, initSVG, resetSVG, upSVG } from './svg';
 
 const html = document.getElementsByTagName('html')[0]
 const head = document.getElementsByTagName('head')[0]
@@ -134,7 +125,7 @@ const main = () => {
       } else removeUI()
     }
   })
-  
+  /*
   // DONE: Insert script into page so it has access in console
   const script = document.createElement('script')
   script.src = browser.runtime.getURL('customScript.js')
@@ -142,6 +133,7 @@ const main = () => {
     this.remove()
   }
   ;(document.head || document.documentElement).appendChild(script)
+  */
 }
 
 main()
