@@ -1,10 +1,10 @@
 function sequenceClass() {
   this.init = function() {
     const tClass = document.getElementsByClassName('t')
-    for (var i = 0; i < tClass.length; i++) {
+    for (let i = 0; i < tClass.length; i++) {
       tClass[i].style.boxShadow = '0px 0px 10px 2px #000000'
       tClass[i].setAttribute('aria-hidden', 'true')
-      tClass[i].onclick = mouseEvent
+      tClass[i].addEventListener('click', mouseEvent)
     }
   }
 
@@ -12,6 +12,7 @@ function sequenceClass() {
     let arr = []
     const tClass = document.getElementsByClassName('t')
     for (let i = 0; i < tClass.length; i++) {
+      tClass[i].removeEventListener('click', mouseEvent)
       tClass[i].removeAttribute('super-script')
       tClass[i].style.boxShadow = ''
       const seq = tClass[i].getAttribute('data-seq')
@@ -21,7 +22,7 @@ function sequenceClass() {
     }
     let _htmlText = ''
     const pg1 = document.body.childNodes[0]
-    for (var i = arr.length - 1; i >= 0; i--) {
+    for (let i = arr.length - 1; i >= 0; i--) {
       _htmlText = arr[i].innerText + '\n' + _htmlText
       pg1.parentNode.insertBefore(arr[i], pg1.nextSibling)
     }
@@ -62,18 +63,12 @@ function sequenceClass() {
     }
   }
 
-  function mouseEvent(e) {
-    switch (e.type) {
-      case 'click':
-        const seq = this.getAttribute('data-seq')
-        if (!seq) {
-          doSequence(this)
-        } else {
-          resequence(this)
-        }
-        break
-      default:
-        break
+  function mouseEvent() {
+    const seq = this.getAttribute('data-seq')
+    if (!seq) {
+      doSequence(this)
+    } else {
+      resequence(this)
     }
   }
 
@@ -117,5 +112,5 @@ function sequenceClass() {
 }
 
 const sequence = new sequenceClass()
-window.sequence = sequence
+// window.sequence = sequence
 module.exports = sequence
